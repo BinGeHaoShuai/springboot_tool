@@ -16,4 +16,4 @@ spring:
       maxActive: 30
 logging:
   #logback.xml加载早于application.properties，所以如果你在logback.xml使用了变量时，而恰好这个变量是写在application.properties时，那么就会获取不到，需将名称改成logback-spring.xml
-  config: classpath:logback-spring.xml
+  config: classpath:log/logback-spring.xml
