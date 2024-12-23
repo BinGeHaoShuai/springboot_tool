@@ -1,10 +1,10 @@
-package com.example.springboot_tool.dto;
+package com.example.springboot_tool.utils;
 
 import lombok.Data;
 
 /**
  * @author 君颜未改
- * @since 2024-12-23 23:04:48
+ * @since 2024-12-24 00:44:24
  */
 @Data
 public class Result<T> {

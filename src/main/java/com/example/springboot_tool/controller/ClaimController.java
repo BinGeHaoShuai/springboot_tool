@@ -2,7 +2,7 @@ package com.example.springboot_tool.controller;
 
 import com.example.springboot_tool.entity.Claim;
 import com.example.springboot_tool.service.ClaimService;
-import com.example.springboot_tool.dto.Result;
+import com.example.springboot_tool.utils.Result;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

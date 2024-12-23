@@ -1,7 +1,5 @@
 package com.example.springboot_tool.service.impl;
 
-import java.math.BigDecimal;
-import java.util.Date;
 import java.math.BigInteger;
 import java.util.List;
 
@@ -9,7 +7,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.springboot_tool.entity.Claim;
 import com.example.springboot_tool.dao.ClaimDao;
 import com.example.springboot_tool.service.ClaimService;
-import com.example.springboot_tool.dto.Result;
+import com.example.springboot_tool.utils.Result;
 import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 
