@@ -17,3 +17,11 @@ spring:
 logging:
   #logback.xml加载早于application.properties，所以如果你在logback.xml使用了变量时，而恰好这个变量是写在application.properties时，那么就会获取不到，需将名称改成logback-spring.xml
   config: classpath:log/logback-spring.xml
+  level:
+    com.baomidou.mybatisplus: debug
+    com.example.*: debug
+
+mybatis-plus:
+  configuration:
+#    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl #修改sql日志输出方式为slf4j
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #日志输出到控制台

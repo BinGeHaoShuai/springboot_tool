@@ -1,5 +1,6 @@
 package com.example.springboot_tool.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.example.springboot_tool.entity.Claim;
 import com.example.springboot_tool.service.ClaimService;
 import com.example.springboot_tool.utils.Result;
@@ -8,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigInteger;
-import java.util.List;
 
 /**
  * 订单主表(Claim)表控制层
@@ -25,8 +25,8 @@ public class ClaimController {
 
     @ApiOperation("分页查询")
     @PostMapping("/page")
-    public Result<List<Claim>> queryByPage(@RequestBody Claim claim, @RequestParam Integer pageNum, @RequestParam Integer pageSize) {
-        return Result.success(claimService.queryByPage(claim, pageNum, pageSize));
+    public IPage<Claim> queryByPage(@RequestBody Claim claim, @RequestParam Integer pageNum, @RequestParam Integer pageSize) {
+        return claimService.queryByPage(claim, pageNum, pageSize);
     }
 
     /**

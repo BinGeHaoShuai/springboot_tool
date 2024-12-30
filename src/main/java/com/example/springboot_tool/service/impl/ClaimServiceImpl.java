@@ -4,6 +4,9 @@ import java.math.BigInteger;
 import java.util.List;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.springboot_tool.entity.Claim;
 import com.example.springboot_tool.dao.ClaimDao;
 import com.example.springboot_tool.service.ClaimService;
@@ -19,7 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @since 2024-12-23 23:36:18
  */
 @Service("claimService")
-public class ClaimServiceImpl implements ClaimService {
+public class ClaimServiceImpl extends ServiceImpl<ClaimDao, Claim> implements ClaimService {
     @Autowired
     private ClaimDao claimDao;
 
@@ -43,11 +46,10 @@ public class ClaimServiceImpl implements ClaimService {
      * @return 查询结果
      */
     @Override
-    public List<Claim> queryByPage(Claim claim, Integer pageNum, Integer pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+    public IPage<Claim> queryByPage(Claim claim, Integer pageNum, Integer pageSize) {
         QueryWrapper<Claim> queryWrapper = new QueryWrapper<>();
-        List<Claim> list = claimDao.selectList(queryWrapper);
-        return list;
+        IPage<Claim> page = claimDao.selectPage(new Page<>(pageNum, pageSize), queryWrapper);
+        return page;
     }
 
     /**

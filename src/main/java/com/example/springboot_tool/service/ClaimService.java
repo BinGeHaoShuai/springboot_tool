@@ -1,6 +1,8 @@
 package com.example.springboot_tool.service;
 
 import java.math.BigInteger;
+
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.example.springboot_tool.entity.Claim;
 import com.example.springboot_tool.utils.Result;
 import java.util.List;
@@ -13,7 +15,7 @@ import java.util.List;
 public interface ClaimService {
     Claim queryById(BigInteger id);
 
-    List<Claim> queryByPage(Claim claim, Integer pageNum, Integer pageSize);
+    IPage<Claim> queryByPage(Claim claim, Integer pageNum, Integer pageSize);
 
     Result insert(Claim claim);
 
