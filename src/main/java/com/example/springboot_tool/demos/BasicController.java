@@ -18,16 +18,12 @@ package com.example.springboot_tool.demos;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author <a href="mailto:chenxilzx1@gmail.com">theonefx</a>
  */
-@Controller
+@RestController
 public class BasicController {
     private static final Logger logger = LoggerFactory.getLogger(BasicController.class);
 
@@ -43,12 +39,21 @@ public class BasicController {
     }
 
     // http://127.0.0.1:8080/user
-    @RequestMapping("/user")
-    @ResponseBody
-    public User user() {
+    @PostMapping("/user")
+    public User user(@RequestParam(name = "userId", defaultValue = "-1") String userId, @RequestBody User userDto) {
         User user = new User();
-        user.setName("theonefx");
-        user.setAge(666);
+        user.setUserId(userId);
+        user.setName(userDto.getName());
+        user.setAge(userDto.getAge());
+        return user;
+    }
+
+    @GetMapping("/getUser")
+    public User user(@RequestParam(name = "userId", defaultValue = "-1") String userId) {
+        User user = new User();
+        user.setUserId(userId);
+        user.setName("huangfeihong");
+        user.setAge(23);
         return user;
     }
 

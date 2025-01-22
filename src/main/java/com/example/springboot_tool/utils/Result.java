@@ -17,6 +17,8 @@ public class Result<T> {
     }
 
     public Result(T data) {
+        this.code = "1";
+        this.msg = "success";
         this.data = data;
     }
 

@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.Map;
+
 /**
  * 动态feign
  *
@@ -14,15 +16,23 @@ import org.springframework.web.bind.annotation.RequestBody;
  */
 public interface DynamicService {
     /**
-     * 通用feign接口
+     * 动态 Post feign接口
      *
      * @param url    要调用微服务的接口url
-     * @param params 调用该接口所传递的参数
+     * @param queryMap 要调用微服务的接口url的参数
+     * @param params 调用该接口所传递的body参数
      * @return
      */
     @PostMapping("{url}")
-    Object executePostApi(@PathVariable("url") String url, @RequestBody Object params);
+    Object executePostApi(@PathVariable("url") String url, @SpringQueryMap Map<String, Object> queryMap, @RequestBody Object params);
 
+    /**
+     * 动态Get feign接口
+     *
+     * @param url    要调用微服务的接口url
+     * @param params 要调用微服务的接口url的参数
+     * @return
+     */
     @GetMapping("{url}")
     Object executeGetApi(@PathVariable("url") String url, @SpringQueryMap Object params);
 }
