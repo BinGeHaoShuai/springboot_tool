@@ -29,8 +29,8 @@ public class DynamicFeignController {
 
     @PostMapping("/postFeign")
     public Result sendPostFeign() {
-        Object result = dynamicClient.executePostApi("http://127.0.0.1:8081", "/hello", new HashMap<>());
-        System.out.println("==========>" + JSONObject.toJSONString(result));
+        Object result = dynamicClient.executePostApi("springboot-tool-service2", "/user", new HashMap<>());
+        System.out.println("print result ==========> " + JSONObject.toJSONString(result));
         return new Result();
     }
 }
